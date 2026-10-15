@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-placement-portal
+  labels:
+    app: student-placement-portal
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: student-placement-portal
+  template:
+    metadata:
+      labels:
+        app: student-placement-portal
+    spec:
+      containers:
+        - name: portal
+          image: docker.io/your-dockerhub-username/student-placement-portal:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 3
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: student-placement-portal
+  labels:
+    app: student-placement-portal
+spec:
+  type: NodePort
+  selector:
+    app: student-placement-portal
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      nodePort: 30080
