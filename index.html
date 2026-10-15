@@ -98,63 +98,110 @@
       .section-head h2 { font-size: 26px; }
       .tag { white-space: normal; text-align: center; }
     }
+    :root {
+      --ink: #26342f;
+      --muted: #728078;
+      --paper: #f2f5f1;
+      --line: #e5ebe6;
+      --green: #2f765d;
+      --lime: #f0a184;
+    }
+    .topbar { display: none; }
+    .shell { max-width: 1000px; padding: 0 20px; }
+    .masthead { min-height: 116px; padding: 18px 20px 20px; display: grid; place-content: center; text-align: center; background: #174b40; color: white; border-bottom: 4px solid #d76f50; }
+    .masthead h1 { margin: 0; font: 750 clamp(22px, 3vw, 29px)/1.2 var(--sans); letter-spacing: 0; }
+    .masthead p { margin: 9px 0 0; color: #d4e4dc; font-size: 12px; }
+    .hero { display: none; }
+    main.shell { width: min(100% - 40px, 960px); margin: 24px auto 0; }
+    #statistics .section-head { display: none; }
+    .stats { gap: 12px; border: 0; }
+    .stat { min-height: 92px; padding: 15px 16px; background: white; border: 1px solid #e8ede9; border-radius: 7px; box-shadow: 0 2px 7px rgba(26,55,43,.07); }
+    .stat:first-child { padding-left: 16px; }
+    .stat:last-child { border-right: 1px solid #e8ede9; }
+    .stat strong { font: 750 23px/1 var(--sans); }
+    .stat span { margin-top: 12px; color: #2f765d; font-size: 12px; font-weight: 700; }
+    .stat em { color: #d76f50; }
+    .content-grid { display: block; margin-bottom: 16px; }
+    .content-grid > section { margin-top: 20px; padding: 15px 14px 13px; background: white; border: 1px solid #e8ede9; border-radius: 7px; box-shadow: 0 2px 7px rgba(26,55,43,.07); }
+    .content-grid .section-head { margin: 0 0 11px; }
+    .content-grid .section-head p { display: none; }
+    .content-grid .section-head h2, #companies .section-head h2 { color: #174b40; font: 750 14px/1.35 var(--sans); }
+    .text-link { display: none; }
+    .drive-table-wrap { overflow-x: auto; border: 1px solid #edf0ed; border-radius: 6px; }
+    .drive-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; font-size: 11px; }
+    .drive-table th { height: 32px; background: #edf3ee; color: #10392f; font-weight: 700; white-space: nowrap; }
+    .drive-table th, .drive-table td { padding: 8px 11px; }
+    .drive-table tbody tr + tr { border-top: 1px solid #edf0ed; }
+    .drive-table tbody tr:hover { background: #f8faf8; }
+    .drive-table td { color: #4d5b54; white-space: nowrap; }
+    .drive-table td:first-child { color: var(--ink); font-weight: 650; }
+    .drive-table .tag { padding: 4px 8px; border-radius: 4px; background: #e3f3e9; color: #27704b; font-size: 10px; }
+    .drive-table .tag.soon { background: #fbede7; color: #a95238; }
+    #companies { margin-top: 16px; padding: 15px 14px 13px; background: white; border: 1px solid #e8ede9; border-radius: 7px; box-shadow: 0 2px 7px rgba(26,55,43,.07); }
+    #companies .section-head { margin: 0 0 10px; }
+    .company-strip { grid-template-columns: repeat(5, 1fr); border: 1px solid #edf0ed; border-radius: 6px; }
+    .company { min-height: 60px; display: block; padding: 12px; border-right: 1px solid #edf0ed; font-size: 11px; }
+    .company span { margin-top: 3px; }
+    footer.shell { padding: 18px 20px 24px; color: #728078; text-align: center; font-size: 10px; }
+    @media (min-width: 651px) and (max-width: 760px) {
+      .drive-table { min-width: 0; table-layout: fixed; font-size: 10px; }
+      .drive-table th, .drive-table td { padding: 8px 6px; white-space: normal; overflow-wrap: anywhere; }
+      .drive-table th:nth-child(1) { width: 17%; }
+      .drive-table th:nth-child(2) { width: 27%; }
+      .drive-table th:nth-child(3) { width: 19%; }
+      .drive-table th:nth-child(4) { width: 21%; }
+      .drive-table th:nth-child(5) { width: 16%; }
+    }
+    @media (max-width: 650px) {
+      main.shell { width: min(100% - 28px, 960px); margin-top: 16px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .stat { min-height: 84px; padding: 13px; }
+      .stat:first-child { padding-left: 13px; }
+      .stat:nth-child(2) { border-right: 1px solid #e8ede9; }
+      .stat:nth-child(3), .stat:nth-child(4) { border-bottom: 1px solid #e8ede9; }
+      .drive-table { min-width: 650px; }
+      .company-strip { grid-template-columns: repeat(2, 1fr); }
+      .company { border-bottom: 1px solid #edf0ed; }
+      .company:nth-child(2n) { border-right: 0; }
+    }
   </style>
 </head>
 <body>
-  <header class="shell topbar">
-    <a class="brand" href="#home" aria-label="Northstar Career Services home"><span class="brand-mark">N</span><span>NORTHSTAR <span style="color:#718077;font-weight:500">/ CAREERS</span></span></a>
-    <nav aria-label="Main navigation">
-      <a href="#opportunities">Opportunities</a><a href="#companies">Companies</a><a href="#statistics">Outcomes</a>
-      <a class="nav-cta" href="#drives">Recruitment calendar</a>
-    </nav>
-  </header>
+  <header class="masthead"><h1>Campus Placement &amp; Recruitment Portal</h1><p>Academic Year 2025–2026 / Drives &amp; Statistics</p></header>
   <main class="shell" id="home">
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <div class="eyebrow">University Career Services / Class of 2026</div>
-        <h1 id="hero-title">Your next chapter starts here.</h1>
-        <p>Meet the teams building what comes next. Explore verified roles, prepare with your placement cell, and find the opportunity that fits your ambition.</p>
-        <div class="hero-actions"><a class="button primary" href="#drives">Explore open drives</a><a class="button" href="#companies">Meet our recruiters</a></div>
-      </div>
-      <div class="hero-stat"><strong>92.4%</strong><span>of eligible students placed this season</span><small>2025-26 placement season</small></div>
-    </section>
-
     <section id="statistics" aria-labelledby="stats-heading">
-      <div class="section-head"><div><p>Placement snapshot / 2025-26</p><h2 id="stats-heading">Momentum, measured.</h2></div><a class="text-link" href="#statistics">View full report&nbsp; &rarr;</a></div>
+      <div class="section-head"><div><p>Placement snapshot / 2025-26</p><h2 id="stats-heading">Placement statistics</h2></div></div>
       <div class="stats">
-        <div class="stat"><strong>1,248</strong><span>Students placed</span></div>
-        <div class="stat"><strong>186</strong><span>Recruiting companies</span></div>
-        <div class="stat"><strong>24.8 LPA</strong><span>Highest package <em>+12% YoY</em></span></div>
-        <div class="stat"><strong>8.6 LPA</strong><span>Average package <em>+8% YoY</em></span></div>
+        <div class="stat"><span>Total Offers</span><strong>1,420+</strong></div>
+        <div class="stat"><span>Highest CTC</span><strong>44.0 LPA</strong></div>
+        <div class="stat"><span>Average CTC</span><strong>9.2 LPA</strong></div>
+        <div class="stat"><span>Visiting Companies</span><strong>180+</strong></div>
       </div>
     </section>
 
     <div class="content-grid">
-      <section id="opportunities" aria-labelledby="students-heading">
-        <div class="section-head"><div><p>Student outcomes</p><h2 id="students-heading">Recently placed</h2></div><a class="text-link" href="#opportunities">All profiles&nbsp; &rarr;</a></div>
-        <div class="student-list">
-          <article class="student"><div class="avatar">AK</div><div><b>Aarav Kapoor</b><small>B.Tech Computer Science / 2026</small></div><div class="offer">18.5 LPA<span>Software Engineer / Vertex Labs</span></div></article>
-          <article class="student"><div class="avatar gold">MS</div><div><b>Meera Shah</b><small>B.Tech Electronics / 2026</small></div><div class="offer">16.2 LPA<span>Product Analyst / Meridian</span></div></article>
-          <article class="student"><div class="avatar blue">RN</div><div><b>Rohan Nair</b><small>MBA / 2026</small></div><div class="offer">14.0 LPA<span>Strategy Associate / Fieldwork</span></div></article>
-        </div>
-      </section>
       <section id="drives" aria-labelledby="drives-heading">
-        <div class="section-head"><div><p>Save the date</p><h2 id="drives-heading">Upcoming drives</h2></div><a class="text-link" href="#drives">Full calendar&nbsp; &rarr;</a></div>
-        <div class="drive-list">
-          <article class="drive"><div class="date"><strong>21</strong> OCT</div><div><b>Vertex Labs</b><small>Software Engineer / B.Tech CS, IT</small></div><span class="tag">Applications open</span></article>
-          <article class="drive"><div class="date"><strong>24</strong> OCT</div><div><b>Meridian Systems</b><small>Graduate Analyst / All branches</small></div><span class="tag">Pre-placement talk</span></article>
-          <article class="drive"><div class="date"><strong>28</strong> OCT</div><div><b>Fieldwork Partners</b><small>Business Associate / MBA</small></div><span class="tag">Applications open</span></article>
+        <div class="section-head"><div><p>Recruitment calendar</p><h2 id="drives-heading">Upcoming Recruitment Drives</h2></div></div>
+        <div class="drive-table-wrap">
+          <table class="drive-table">
+            <thead><tr><th scope="col">Company</th><th scope="col">Role</th><th scope="col">Eligibility</th><th scope="col">Drive Date</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><td>Microsoft</td><td>Software Engineer</td><td>CGPA &ge; 8.5</td><td>Nov 05, 2026</td><td><span class="tag">Open</span></td></tr>
+              <tr><td>Amazon</td><td>Cloud Support Associate</td><td>CGPA &ge; 7.5</td><td>Nov 12, 2026</td><td><span class="tag">Open</span></td></tr>
+              <tr><td>Qualcomm</td><td>Embedded Systems Engineer</td><td>CGPA &ge; 8.0</td><td>Nov 18, 2026</td><td><span class="tag soon">Upcoming</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </div>
 
     <section id="companies" aria-labelledby="companies-heading">
-      <div class="section-head"><div><p>Our recruiting network</p><h2 id="companies-heading">Good people. Ambitious teams.</h2></div><a class="text-link" href="#companies">Browse companies&nbsp; &rarr;</a></div>
+      <div class="section-head"><div><p>Student outcomes</p><h2 id="companies-heading">Recently Placed Students &amp; Recruiters</h2></div></div>
       <div class="company-strip" aria-label="Featured recruiting companies">
-        <div class="company">VERTEX<span>Technology</span></div><div class="company">MERIDIAN<span>Financial services</span></div><div class="company">FIELDWORK<span>Consulting</span></div><div class="company">NORTHLINE<span>Engineering</span></div><div class="company">CANOPY<span>Consumer</span></div>
+        <div class="company">Aarav Kapoor<span>B.Tech CS / 18.5 LPA</span></div><div class="company">Meera Shah<span>B.Tech ECE / 16.2 LPA</span></div><div class="company">Rohan Nair<span>MBA / 14.0 LPA</span></div><div class="company">Microsoft<span>Technology</span></div><div class="company">Qualcomm<span>Engineering</span></div>
       </div>
     </section>
   </main>
-  <footer class="shell"><span>Northstar University / Career Services</span><span>Placement information for the 2025-26 academic year</span><span>placement@northstar.edu</span></footer>
+  <footer class="shell">University Placement Cell / Academic Year 2025–2026</footer>
 </body>
 </html>
